@@ -11,3 +11,4 @@ There are 2 apps, one which involves the front-end part using React and Redux an
 3.	Run npm start to start the app.
 
 Recommended port for Express is 3000 for this app and React runs on 3001 port by default.
+The application can be accessed by - http://localhost:3001/ once all the installation is done successfully
