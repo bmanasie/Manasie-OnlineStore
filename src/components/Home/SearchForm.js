@@ -1,0 +1,44 @@
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { searchProduct, fetchProducts } from "../../actions/searchActions";
+
+export class SearchForm extends Component {
+  onChange = (e) => {
+    this.props.searchProduct(e.target.value);
+  };
+  onSubmit = (e) => {
+    e.preventDefault();
+    this.props.fetchProducts(this.props.text);
+  };
+  render() {
+    return (
+      <div className="jumbotron jumbotron-fluid mt-5 text-center">
+        <div className="container">
+          <h1 className="display-4 mb-3">
+            <i className="fa fa-search" />
+            Search for a product..
+          </h1>
+          <form id="searchForm" onSubmit={this.onSubmit}>
+            <input
+              type="text"
+              className="form-control"
+              name="searchText"
+              placeholder="Search for products"
+              onChange={this.onChange}
+            />
+            <button type="submit" className="btn btn-primary btn-bg mt-3">
+              Search
+            </button>
+          </form>
+        </div>
+      </div>
+    );
+  }
+}
+
+const mapStatesToProps = (state) => ({
+  text: state.products.text,
+});
+export default connect(mapStatesToProps, { searchProduct, fetchProducts })(
+  SearchForm
+);
